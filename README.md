@@ -111,3 +111,4 @@ Then add `org.apache.hadoop:hadoop-aws:3.3.4` to the `spark.jars.packages` list 
 **Lots of small files.** Partitioning by date and device with a 30 second trigger means 10 devices times 120 batches an hour, so over a thousand files per hour. A compaction job would clean that up.
 
 **No load testing.** I ran this at 5 events per second on a laptop. I have no idea where it breaks.
+
