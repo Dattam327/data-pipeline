@@ -39,7 +39,12 @@ def parse(raw):
 def add_reject_reason(df):
     """Label anything that fails a check. Null reason means the record is fine."""
     reason = (
-        F.when(F.col("data").isNull(), "unparseable_json")
+       F.when(
+            F.col("data").isNull()
+            | (F.col("data.event_id").isNull()
+               & F.col("data.device_id").isNull()
+               & F.col("data.timestamp").isNull()),
+            "unparseable_json")
         .when(F.col("data.event_id").isNull(), "missing_event_id")
         .when(F.col("data.device_id").isNull(), "missing_device_id")
         .when(F.col("event_ts").isNull(), "bad_timestamp")
