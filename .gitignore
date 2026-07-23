@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# spark and local output
+spark-warehouse/
+metastore_db/
+derby.log
+_chk/
+clean/
+dead_letter/
+
+.env
+.DS_Store
